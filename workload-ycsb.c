@@ -6,6 +6,8 @@
 #include "workload-common.h"
 
 static char *_create_unique_item_ycsb(uint64_t uid) {
+   // item_size means value size in (key, value)
+   // TODO: make nb_items_in_db configurable
    size_t item_size = 1024;
    //size_t item_size = sizeof(struct item_metadata) + 2*sizeof(size_t);
    return create_unique_item(item_size, uid);
