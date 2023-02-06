@@ -47,9 +47,13 @@ int main(int argc, char **argv) {
 
    /* Launch benchs */
    bench_t workload, workloads[] = {
-      ycsb_a_uniform, ycsb_b_uniform, ycsb_c_uniform,
-      ycsb_a_zipfian, ycsb_b_zipfian, ycsb_c_zipfian,
-      //ycsb_e_uniform, ycsb_e_zipfian, // Scans
+      // ycsb_a_uniform,
+      // ycsb_a_zipfian,
+      // ycsb_a_uniform, ycsb_b_uniform, ycsb_c_uniform,
+      // ycsb_a_zipfian, ycsb_b_zipfian, ycsb_c_zipfian,
+      // ycsb_e_uniform, ycsb_e_zipfian, // Scans
+      ycsb_g_uniform, ycsb_g_zipfian,
+      ycsb_f_uniform, ycsb_f_zipfian,
    };
    foreach(workload, workloads) {
       if(workload == ycsb_e_uniform || workload == ycsb_e_zipfian) {
@@ -61,3 +65,4 @@ int main(int argc, char **argv) {
    }
    return 0;
 }
+

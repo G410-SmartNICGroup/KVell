@@ -29,6 +29,10 @@ static int random_get_put(int test) {
          return 0;
       case 3: // E
          return random >= 95;
+      case 4: //G
+         return 1;
+      case 5: //G
+         return random >= 50;
    }
    die("Not a valid test\n");
 }
@@ -47,7 +51,26 @@ static void _launch_ycsb(int test, int nb_requests, int zipfian) {
       } else { // or we read
          kv_read_async(cb);
       }
-      periodic_count(1000, "YCSB Load Injector (%lu%%)", i*100LU/nb_requests);
+      // periodic_count(1000, "YCSB Load Injector (%lu%%)", i*100LU/nb_requests);
+   }
+}
+
+/* YCSB A (or D), B, C */
+static void _launch_ycsb_f(int test, int nb_requests, int zipfian) {
+   declare_periodic_count;
+   for(size_t i = 0; i < nb_requests; i++) {
+      struct slab_callback *cb = bench_cb();
+      if(zipfian)
+         cb->item = _create_unique_item_ycsb(zipf_next());
+      else
+         cb->item = _create_unique_item_ycsb(uniform_next());
+      if(random_get_put(test)) { // In these tests we update with a given probability
+         kv_read_sync(cb->item);
+         kv_update_async(cb);
+      } else { // or we read
+         kv_read_async(cb);
+      }
+      // periodic_count(1000, "YCSB Load Injector (%lu%%)", i*100LU/nb_requests);
    }
 }
 
@@ -72,7 +95,7 @@ static void _launch_ycsb_e(int test, int nb_requests, int zipfian) {
          free(scan_res.hashes);
          free(scan_res.entries);
       }
-      periodic_count(1000, "YCSB Load Injector (scans) (%lu%%)", i*100LU/nb_requests);
+      // periodic_count(1000, "YCSB Load Injector (scans) (%lu%%)", i*100LU/nb_requests);
    }
 }
 
@@ -87,6 +110,10 @@ static void launch_ycsb(struct workload *w, bench_t b) {
          return _launch_ycsb(2, w->nb_requests_per_thread, 0);
       case ycsb_e_uniform:
          return _launch_ycsb_e(3, w->nb_requests_per_thread, 0);
+      case ycsb_g_uniform:
+         return _launch_ycsb(4, w->nb_requests_per_thread, 0);
+      case ycsb_f_uniform:
+         return _launch_ycsb_f(5, w->nb_requests_per_thread, 0);
       case ycsb_a_zipfian:
          return _launch_ycsb(0, w->nb_requests_per_thread, 1);
       case ycsb_b_zipfian:
@@ -95,6 +122,10 @@ static void launch_ycsb(struct workload *w, bench_t b) {
          return _launch_ycsb(2, w->nb_requests_per_thread, 1);
       case ycsb_e_zipfian:
          return _launch_ycsb_e(3, w->nb_requests_per_thread, 1);
+      case ycsb_g_zipfian:
+         return _launch_ycsb(4, w->nb_requests_per_thread, 1);
+      case ycsb_f_zipfian:
+         return _launch_ycsb_f(5, w->nb_requests_per_thread, 1);
       default:
          die("Unsupported workload\n");
    }
@@ -111,6 +142,10 @@ static const char *name_ycsb(bench_t w) {
          return "YCSB C - Uniform";
       case ycsb_e_uniform:
          return "YCSB E - Uniform";
+      case ycsb_g_uniform:
+         return "YCSB G - Uniform";
+      case ycsb_f_uniform:
+         return "YCSB F - Uniform";
       case ycsb_a_zipfian:
          return "YCSB A - Zipf";
       case ycsb_b_zipfian:
@@ -119,6 +154,10 @@ static const char *name_ycsb(bench_t w) {
          return "YCSB C - Zipf";
       case ycsb_e_zipfian:
          return "YCSB E - Zipf";
+      case ycsb_g_zipfian:
+         return "YCSB G - Zipf";
+       case ycsb_f_zipfian:
+         return "YCSB F - Zipf";
       default:
          return "??";
    }
@@ -130,10 +169,14 @@ static int handles_ycsb(bench_t w) {
       case ycsb_b_uniform:
       case ycsb_c_uniform:
       case ycsb_e_uniform:
+      case ycsb_g_uniform:
+      case ycsb_f_uniform:
       case ycsb_a_zipfian:
       case ycsb_b_zipfian:
       case ycsb_c_zipfian:
       case ycsb_e_zipfian:
+      case ycsb_g_zipfian:
+      case ycsb_f_zipfian:
          return 1;
       default:
          return 0;
