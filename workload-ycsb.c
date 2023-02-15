@@ -6,8 +6,6 @@
 #include "workload-common.h"
 
 static char *_create_unique_item_ycsb(uint64_t uid) {
-   // item_size means value size in (key, value)
-   // TODO: make nb_items_in_db configurable
    size_t item_size = 1024;
    //size_t item_size = sizeof(struct item_metadata) + 2*sizeof(size_t);
    return create_unique_item(item_size, uid);
@@ -33,6 +31,9 @@ static int random_get_put(int test) {
          return 1;
       case 5: //G
          return random >= 50;
+      case 6: //D
+         return random >= 95;
+
    }
    die("Not a valid test\n");
 }
@@ -55,6 +56,43 @@ static void _launch_ycsb(int test, int nb_requests, int zipfian) {
    }
 }
 
+
+static void _launch_seq_write(int nb_requests, int nb_items_in_db) {
+   declare_periodic_count;
+   for(size_t i = 0; i < nb_requests; i++) {
+      struct slab_callback *cb = bench_cb();
+      cb->item = _create_unique_item_ycsb(i);
+      kv_update_async(cb);
+   }
+}
+
+static void _launch_seq_read(int nb_requests, int nb_items_in_db) {
+   declare_periodic_count;
+   for(size_t i = 0; i < nb_requests; i++) {
+      struct slab_callback *cb = bench_cb();
+      cb->item = _create_unique_item_ycsb(i);
+      kv_read_async(cb);
+   }
+}
+
+static void _launch_rnd_write(int nb_requests, int nb_items_in_db) {
+   declare_periodic_count;
+   for(size_t i = 0; i < nb_requests; i++) {
+      struct slab_callback *cb = bench_cb();
+      cb->item = _create_unique_item_ycsb(uniform_next());
+      kv_update_async(cb);
+   }
+}
+
+static void _launch_rnd_read(int nb_requests, int nb_items_in_db) {
+   declare_periodic_count;
+   for(size_t i = 0; i < nb_requests; i++) {
+      struct slab_callback *cb = bench_cb();
+      cb->item = _create_unique_item_ycsb(uniform_next());
+      kv_read_async(cb);
+   }
+}
+
 /* YCSB A (or D), B, C */
 static void _launch_ycsb_f(int test, int nb_requests, int zipfian) {
    declare_periodic_count;
@@ -66,6 +104,24 @@ static void _launch_ycsb_f(int test, int nb_requests, int zipfian) {
          cb->item = _create_unique_item_ycsb(uniform_next());
       if(random_get_put(test)) { // In these tests we update with a given probability
          kv_read_sync(cb->item);
+         kv_update_async(cb);
+      } else { // or we read
+         kv_read_async(cb);
+      }
+      // periodic_count(1000, "YCSB Load Injector (%lu%%)", i*100LU/nb_requests);
+   }
+}
+
+/* YCSB A (or D), B, C */
+static void _launch_ycsb_d(int test, int nb_requests, int zipfian) {
+   declare_periodic_count;
+   for(size_t i = 0; i < nb_requests; i++) {
+      struct slab_callback *cb = bench_cb();
+      if(zipfian)
+         cb->item = _create_unique_item_ycsb(zipf_next());
+      else
+         cb->item = _create_unique_item_ycsb(uniform_next());
+      if(random_get_put(test)) { // In these tests we update with a given probability
          kv_update_async(cb);
       } else { // or we read
          kv_read_async(cb);
@@ -126,6 +182,16 @@ static void launch_ycsb(struct workload *w, bench_t b) {
          return _launch_ycsb(4, w->nb_requests_per_thread, 1);
       case ycsb_f_zipfian:
          return _launch_ycsb_f(5, w->nb_requests_per_thread, 1);
+      case ycsb_d_zipfian:
+         return _launch_ycsb_d(6, w->nb_requests_per_thread, 1);
+      case seq_read:
+         return _launch_seq_read(w->nb_requests_per_thread, w->nb_items_in_db);
+      case seq_write:
+         return _launch_seq_write(w->nb_requests_per_thread, w->nb_items_in_db);
+      case rnd_read:
+         return _launch_rnd_read(w->nb_requests_per_thread, w->nb_items_in_db);
+      case rnd_write:
+         return _launch_rnd_write(w->nb_requests_per_thread, w->nb_items_in_db);
       default:
          die("Unsupported workload\n");
    }
@@ -156,8 +222,18 @@ static const char *name_ycsb(bench_t w) {
          return "YCSB E - Zipf";
       case ycsb_g_zipfian:
          return "YCSB G - Zipf";
-       case ycsb_f_zipfian:
+      case ycsb_f_zipfian:
          return "YCSB F - Zipf";
+      case ycsb_d_zipfian:
+         return "YCSB D - Zipf";
+      case seq_read:
+         return "SEQ READ";
+      case seq_write:
+         return "SEQ WRITE";
+      case rnd_read:
+         return "RND READ";
+      case rnd_write:
+         return "RND WRITE";
       default:
          return "??";
    }
@@ -177,6 +253,11 @@ static int handles_ycsb(bench_t w) {
       case ycsb_e_zipfian:
       case ycsb_g_zipfian:
       case ycsb_f_zipfian:
+      case ycsb_d_zipfian:
+      case seq_read:
+      case seq_write:
+      case rnd_read:
+      case rnd_write:
          return 1;
       default:
          return 0;

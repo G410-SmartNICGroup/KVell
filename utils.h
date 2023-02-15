@@ -27,8 +27,10 @@
        (val) = ((unsigned long)__a) | (((unsigned long)__d)<<32);   \
 }
 #else
-#define rdtscll(val) __asm__ __volatile__("rdtsc" : "=A" (val))
+#define rdtscll(val) __asm__ __volatile__("mrs %0,  cntvct_el0" : "=r" (val));
+//#define rdtscll(val) __asm__ __volatile__("rdtsc" : "=A" (val))
 #endif
+
 
 #define NOP10() asm("nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;nop;")
 

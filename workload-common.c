@@ -67,7 +67,7 @@ void *repopulate_db_worker(void *pdata) {
       struct slab_callback *cb = malloc(sizeof(*cb));
       cb->cb = add_in_tree;
       cb->payload = NULL;
-      cb->item = api->create_unique_item(pos[i], w->nb_items_in_db);
+      cb->item = api->create_unique_item(i, w->nb_items_in_db);
       kv_add_async(cb);
       periodic_count(1000, "Repopulating database (%lu%%)", 100LU-(end-i)*100LU/(end - start));
    }
@@ -119,13 +119,13 @@ void repopulate_db(struct workload *w) {
 
 
    size_t *pos = NULL;
-   start_timer {
-      printf("Initializing big array to insert elements in random order... This might take a while. (Feel free to comment but then the database will be sorted and scans much faster -- unfair vs other systems)\n");
-      pos = malloc(w->nb_items_in_db * sizeof(*pos));
-      for(size_t i = 0; i < w->nb_items_in_db; i++)
-         pos[i] = i;
-      shuffle(pos, nb_inserts); // To be fair to other systems, we shuffle items in the DB so that the DB is not fully sorted by luck
-   } stop_timer("Big array of random positions");
+   // start_timer {
+   //    printf("Initializing big array to insert elements in random order... This might take a while. (Feel free to comment but then the database will be sorted and scans much faster -- unfair vs other systems)\n");
+   //    pos = malloc(w->nb_items_in_db * sizeof(*pos));
+   //    for(size_t i = 0; i < w->nb_items_in_db; i++)
+   //       pos[i] = i;
+   //    shuffle(pos, nb_inserts); // To be fair to other systems, we shuffle items in the DB so that the DB is not fully sorted by luck
+   // } stop_timer("Big array of random positions");
 
    start_timer {
       struct rebuild_pdata *pdata = malloc(w->nb_load_injectors*sizeof(*pdata));
@@ -187,17 +187,17 @@ void compute_stats(struct slab_callback *cb, void *item) {
       start = get_time_from_payload(cb, 0);
       rdtscll(end);
       add_timing_stat(end - start);
-      if(DEBUG && cycles_to_us(end-start) > 10000) { // request took more than 10ms
-         printf("Request [%lu: %lu] [%lu: %lu] [%lu: %lu] [%lu: %lu] [%lu: %lu] [%lu: %lu] [%lu: %lu] [%lu]\n",
-               get_origin_from_payload(cb, 1), get_time_from_payload(cb, 1) < start ? 0 : cycles_to_us(get_time_from_payload(cb, 1) - start),
-               get_origin_from_payload(cb, 2), get_time_from_payload(cb, 2) < start ? 0 : cycles_to_us(get_time_from_payload(cb, 2) - start),
-               get_origin_from_payload(cb, 3), get_time_from_payload(cb, 3) < start ? 0 : cycles_to_us(get_time_from_payload(cb, 3) - start),
-               get_origin_from_payload(cb, 4), get_time_from_payload(cb, 4) < start ? 0 : cycles_to_us(get_time_from_payload(cb, 4) - start),
-               get_origin_from_payload(cb, 5), get_time_from_payload(cb, 5) < start ? 0 : cycles_to_us(get_time_from_payload(cb, 5) - start),
-               get_origin_from_payload(cb, 6), get_time_from_payload(cb, 6) < start ? 0 : cycles_to_us(get_time_from_payload(cb, 6) - start),
-               get_origin_from_payload(cb, 7), get_time_from_payload(cb, 7) < start ? 0 : cycles_to_us(get_time_from_payload(cb, 7) - start),
-               cycles_to_us(end  - start));
-      }
+      // if(DEBUG && cycles_to_us(end-start) > 10000) { // request took more than 10ms
+      //    printf("Request [%lu: %lu] [%lu: %lu] [%lu: %lu] [%lu: %lu] [%lu: %lu] [%lu: %lu] [%lu: %lu] [%lu]\n",
+      //          get_origin_from_payload(cb, 1), get_time_from_payload(cb, 1) < start ? 0 : cycles_to_us(get_time_from_payload(cb, 1) - start),
+      //          get_origin_from_payload(cb, 2), get_time_from_payload(cb, 2) < start ? 0 : cycles_to_us(get_time_from_payload(cb, 2) - start),
+      //          get_origin_from_payload(cb, 3), get_time_from_payload(cb, 3) < start ? 0 : cycles_to_us(get_time_from_payload(cb, 3) - start),
+      //          get_origin_from_payload(cb, 4), get_time_from_payload(cb, 4) < start ? 0 : cycles_to_us(get_time_from_payload(cb, 4) - start),
+      //          get_origin_from_payload(cb, 5), get_time_from_payload(cb, 5) < start ? 0 : cycles_to_us(get_time_from_payload(cb, 5) - start),
+      //          get_origin_from_payload(cb, 6), get_time_from_payload(cb, 6) < start ? 0 : cycles_to_us(get_time_from_payload(cb, 6) - start),
+      //          get_origin_from_payload(cb, 7), get_time_from_payload(cb, 7) < start ? 0 : cycles_to_us(get_time_from_payload(cb, 7) - start),
+      //          cycles_to_us(end  - start));
+      // }
       free(cb->item);
       if(DEBUG)
          free_payload(cb);
@@ -271,4 +271,5 @@ void run_workload(struct workload *w, bench_t b) {
 
    free(pdata);
 }
+
 

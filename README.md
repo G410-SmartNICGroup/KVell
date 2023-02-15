@@ -5,33 +5,6 @@
 > Switch to the "osdi" branch for the code and README related to "KVell+: Snapshot Isolation Without Snapshots".
 ---
 
-## Compiling and reproducing in Samsung SSD 983 DCT 960GB
-
-```bash
-# Create an Ubuntu Server 18.04 LTS instance on an i3.metal machine and install dependencies
-sudo apt install make clang autoconf libtool
-
-# Install gpertools (optionnal, but KVell will be slower without TCMalloc):
-cd ~
-git clone https://github.com/gperftools/gperftools.git
-cd gpertools
-./autogen.sh
-./configure
-make -j 36
-
-# Install KVell
-cd ~
-git clone https://github.com/BLepers/KVell
-cd KVell
-make -j
-
-# Run KVell
-mkdir /scratch0
-mount /dev/nvmexxx /scratch0
-mkdir -p /scratch0/kvell
-./main 1 8
-```
-
 ## Compiling and reproducing results
 
 To run KVell on an Amazon i3.metal instance and reproduce results:

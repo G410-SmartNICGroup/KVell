@@ -1,0 +1,220 @@
+(run_workload,269) [ 35209ms] YCSB A - Zipf - 10000000 requests (284015 req/s)
+#Latency:
+#	AVG - 700 us
+#	99.9p - 1114 us
+#	max - 2915 us
+(run_workload,269) [ 19098ms] YCSB B - Zipf - 10000000 requests (523592 req/s)
+#Latency:
+#	AVG - 328 us
+#	99.9p - 645 us
+#	max - 1188 us
+(run_workload,269) [ 17228ms] YCSB C - Zipf - 10000000 requests (580449 req/s)
+#Latency:
+#	AVG - 288 us
+#	99.9p - 498 us
+#	max - 3555 us
+(run_workload,269) [ 19235ms] YCSB D - Zipf - 10000000 requests (519861 req/s)
+#Latency:
+#	AVG - 331 us
+#	99.9p - 654 us
+#	max - 1156 us
+(run_workload,269) [118658ms] YCSB F - Zipf - 10000000 requests (84275 req/s)
+#Latency:
+#	AVG - 17 us
+#	99.9p - 378 us
+#	max - 3741 us
+(run_workload,269) [ 60833ms] YCSB G - Zipf - 10000000 requests (164383 req/s)
+#Latency:
+#	AVG - 1239 us
+#	99.9p - 1802 us
+#	max - 3528 us
+
+
+(run_workload,269) [ 37170ms] YCSB A - Zipf - 10000000 requests (269028 req/s)
+#Latency:
+#	AVG - 1466 us
+#	99.9p - 6215 us
+#	max - 11967 us
+(run_workload,269) [ 18432ms] YCSB B - Zipf - 10000000 requests (542533 req/s)
+#Latency:
+#	AVG - 685 us
+#	99.9p - 3215 us
+#	max - 7735 us
+(run_workload,269) [ 15532ms] YCSB C - Zipf - 10000000 requests (643817 req/s)
+#Latency:
+#	AVG - 554 us
+#	99.9p - 2074 us
+#	max - 3704 us
+(run_workload,269) [ 16522ms] YCSB D - Zipf - 10000000 requests (605227 req/s)
+#Latency:
+#	AVG - 584 us
+#	99.9p - 2480 us
+#	max - 6800 us
+(run_workload,269) [ 58937ms] YCSB F - Zipf - 10000000 requests (169669 req/s)
+#Latency:
+#	AVG - 125 us
+#	99.9p - 1348 us
+#	max - 8243 us
+(run_workload,269) [ 41344ms] YCSB G - Zipf - 10000000 requests (241867 req/s)
+#Latency:
+#	AVG - 1646 us
+#	99.9p - 6302 us
+#	max - 9184 us
+
+
+(run_workload,269) [ 29129ms] YCSB A - Zipf - 10000000 requests (343300 req/s)
+#Latency:
+#       AVG - 1886 us
+#       99.9p - 4237 us
+#       max - 7296 us
+(run_workload,269) [  5846ms] YCSB B - Zipf - 10000000 requests (1710380 req/s)
+#Latency:
+#       AVG - 204 us
+#       99.9p - 782 us
+#       max - 2941 us
+(run_workload,269) [  4765ms] YCSB C - Zipf - 10000000 requests (2098538 req/s)
+#Latency:
+#       AVG - 104 us
+#       99.9p - 375 us
+#       max - 1035 us
+(run_workload,269) [  5489ms] YCSB D - Zipf - 10000000 requests (1821665 req/s)
+#Latency:
+#       AVG - 176 us
+#       99.9p - 711 us
+#       max - 1424 us
+(run_workload,269) [117936ms] YCSB F - Zipf - 10000000 requests (84791 req/s)
+#Latency:
+#       AVG - 10 us
+#       99.9p - 37 us
+#       max - 4036 us
+(run_workload,269) [ 58488ms] YCSB G - Zipf - 10000000 requests (170974 req/s)
+#Latency:
+#       AVG - 3545 us
+#       99.9p - 6866 us
+#       max - 8555 us
+
+
+
+(run_workload,269) [ 29083ms] YCSB A - Zipf - 10000000 requests (343832 req/s)
+#Latency:
+#       AVG - 3763 us
+#       99.9p - 9383 us
+#       max - 13065 us
+(run_workload,269) [  3871ms] YCSB B - Zipf - 10000000 requests (2583084 req/s)
+#Latency:
+#       AVG - 205 us
+#       99.9p - 979 us
+#       max - 5368 us
+(run_workload,269) [  3158ms] YCSB C - Zipf - 10000000 requests (3166250 req/s)
+#Latency:
+#       AVG - 77 us
+#       99.9p - 480 us
+#       max - 1272 us
+(run_workload,269) [  3838ms] YCSB D - Zipf - 10000000 requests (2605249 req/s)
+#Latency:
+#       AVG - 190 us
+#       99.9p - 953 us
+#       max - 1988 us
+(run_workload,269) [118754ms] YCSB F - Zipf - 10000000 requests (84207 req/s)
+#Latency:
+#       AVG - 10 us
+#       99.9p - 35 us
+#       max - 10298 us
+(run_workload,269) [ 57692ms] YCSB G - Zipf - 10000000 requests (173334 req/s)
+#Latency:
+#       AVG - 7072 us
+#       99.9p - 14991 us
+#       max - 18113 us
+
+
+#Latency:
+#   AVG - 5405 us
+#   99.9p - 17997 us
+#   max - 23308 us
+(run_workload,269) [  5817ms] YCSB B - Zipf - 10000000 requests (1718917 req/s)
+#Latency:
+#   AVG - 157 us
+#   99.9p - 2363 us
+#   max - 8578 us
+(run_workload,269) [  5456ms] YCSB C - Zipf - 10000000 requests (1832815 req/s)
+#Latency:
+#   AVG - 131 us
+#   99.9p - 1519 us
+#   max - 2488 us
+(run_workload,269) [  5607ms] YCSB D - Zipf - 10000000 requests (1783256 req/s)
+#Latency:
+#   AVG - 145 us
+#   99.9p - 2113 us
+#   max - 3994 us
+(run_workload,269) [121720ms] YCSB F - Zipf - 10000000 requests (82155 req/s)
+#Latency:
+#   AVG - 12 us
+#   99.9p - 38 us
+#   max - 22039 us
+(run_workload,269) [ 57553ms] YCSB G - Zipf - 10000000 requests (173750 req/s)
+#Latency:
+#   AVG - 12981 us
+#   99.9p - 30835 us
+#   max - 40147 us
+(run_workload,269) [ 28270ms] YCSB A - Zipf - 10000000 requests (353728 req/s)
+#Latency:
+#   AVG - 8585 us
+#   99.9p - 32354 us
+#   max - 43594 us
+(run_workload,269) [  4067ms] YCSB B - Zipf - 10000000 requests (2458469 req/s)
+#Latency:
+#   AVG - 101 us
+#   99.9p - 2176 us
+#   max - 10480 us
+(run_workload,269) [  3898ms] YCSB C - Zipf - 10000000 requests (2564764 req/s)
+#Latency:
+#   AVG - 7 us
+#   99.9p - 233 us
+#   max - 1181 us
+(run_workload,269) [  4132ms] YCSB D - Zipf - 10000000 requests (2419939 req/s)
+#Latency:
+#   AVG - 93 us
+#   99.9p - 1945 us
+#   max - 7276 us
+(run_workload,269) [125061ms] YCSB F - Zipf - 10000000 requests (79960 req/s)
+#Latency:
+#   AVG - 16 us
+#   99.9p - 40 us
+#   max - 39209 us
+(run_workload,269) [ 59181ms] YCSB G - Zipf - 10000000 requests (168971 req/s)
+#Latency:
+#   AVG - 23512 us
+#   99.9p - 93612 us
+#   max - 230106 us
+(run_workload,269) [ 28033ms] YCSB A - Zipf - 10000000 requests (356712 req/s)
+#Latency:
+#       AVG - 10794 us
+#       99.9p - 43169 us
+#       max - 69987 us
+(run_workload,269) [  4758ms] YCSB B - Zipf - 10000000 requests (2101540 req/s)
+#Latency:
+#       AVG - 83 us
+#       99.9p - 9066 us
+#       max - 13466 us
+(run_workload,269) [  4727ms] YCSB C - Zipf - 10000000 requests (2115187 req/s)
+#Latency:
+#       AVG - 5 us
+#       99.9p - 162 us
+#       max - 7556 us
+(run_workload,269) [  4643ms] YCSB D - Zipf - 10000000 requests (2153397 req/s)
+#Latency:
+#       AVG - 14 us
+#       99.9p - 610 us
+#       max - 8321 us
+(run_workload,269) [125594ms] YCSB F - Zipf - 10000000 requests (79621 req/s)
+#Latency:
+#       AVG - 21 us
+#       99.9p - 44 us
+#       max - 56483 us
+(run_workload,269) [ 57482ms] YCSB G - Zipf - 10000000 requests (173965 req/s)
+#Latency:
+#       AVG - 34965 us
+#       99.9p - 134384 us
+#       max - 282660 us
+
+

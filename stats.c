@@ -50,7 +50,9 @@ void print_stats(void) {
    for(size_t i = 0; i < last; i++)
       avg += stats.timing_value[i];
 
-   printf("#Latency:\n#\tAVG - %lu us\n#\t99p - %lu us\n#\tmax - %lu us\n", cycles_to_us(avg/last), cycles_to_us(stats.timing_value[last*99/100]), cycles_to_us(stats.timing_value[last-1]));
+   int p999_pos = (int)(last*99.9/100);
+
+   printf("#Latency:\n#\tAVG - %lu us\n#\t99.9p - %lu us\n#\tmax - %lu us\n", cycles_to_us(avg/last), cycles_to_us(stats.timing_value[p999_pos]), cycles_to_us(stats.timing_value[last-1]));
 
    stats.timing_idx = 0;
 }

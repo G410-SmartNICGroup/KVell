@@ -110,7 +110,7 @@ void *do_libaio(void *data) {
 
       wait_for(450000); __3
 
-      show_breakdown_periodic(1000, i, "io_submit", "io_getevents", "waiting", "unused", "unused");
+      // show_breakdown_periodic(1000, i, "io_submit", "io_getevents", "waiting", "unused", "unused");
    }
 
    ret = io_destroy(ctx);

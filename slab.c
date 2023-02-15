@@ -67,7 +67,8 @@ void process_existing_chunk(int slab_worker_id, struct slab *s, size_t nb_files,
          add_existing_item(s, base_idx, &data[current], callback);
          base_idx++;
          current += s->item_size;
-         periodic_count(1000, "[SLAB WORKER %d] Init - Recovered %lu items, %lu free spots", slab_worker_id, s->nb_items, s->nb_free_items);
+         // printf("item size is %d\n", s->item_size);
+         // periodic_count(1000, "[SLAB WORKER %d] Init - Recovered %lu items, %lu free spots", slab_worker_id, s->nb_items, s->nb_free_items);
       }
    }
 }

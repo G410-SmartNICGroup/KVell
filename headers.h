@@ -20,7 +20,6 @@
 #include <signal.h>
 #include <sys/syscall.h>
 #include <linux/aio_abi.h>
-
 #include "options.h"
 
 #include "utils.h"

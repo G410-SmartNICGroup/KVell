@@ -1,0 +1,290 @@
+nohup: ignoring input
+# Configuration:
+# 	Page cache size: 30 GB
+# 	Workers: 1 working on 1 disks
+# 	IO configuration: 64 queue depth (capped: yes, extra waiting: no)
+# 	Queue configuration: 256 maximum pending callbaks per worker
+# 	Datastructures: 3 (memory index) 3 (pagecache)
+# 	Thread pinning: yes
+# 	Bench: YCSB (100000000 elements)
+Initializing random number generator (Zipf) -- this might take a while for large databases...
+(main,36) [  1708ms] Initializing random number generator (Zipf)
+[SLAB WORKER 0] tid 3901214
+#Reserving memory for page cache...
+(page_cache_init,29) [ 13573ms] Page cache initialization
+(main,41) [ 13574ms] Init found 0 elements
+Initializing big array to insert elements in random order... This might take a while. (Feel free to comment but then the database will be sorted and scans much faster -- unfair vs other systems)
+(repopulate_db,128) [ 11430ms] Big array of random positions
+(repopulate_db,149) [493317ms] Repopulating 100000000 elements (202709 req/s)
+(run_workload,269) [113363ms] YCSB F - Zipf - 10000000 requests (88212 req/s)
+#Latency:
+#	AVG - 244 us
+#	99.9p - 1636 us
+#	max - 85105 us
+# Configuration:
+# 	Page cache size: 30 GB
+# 	Workers: 2 working on 1 disks
+# 	IO configuration: 64 queue depth (capped: yes, extra waiting: no)
+# 	Queue configuration: 256 maximum pending callbaks per worker
+# 	Datastructures: 3 (memory index) 3 (pagecache)
+# 	Thread pinning: yes
+# 	Bench: YCSB (100000000 elements)
+Initializing random number generator (Zipf) -- this might take a while for large databases...
+(main,36) [  1686ms] Initializing random number generator (Zipf)
+[SLAB WORKER 0] tid 3903013
+[SLAB WORKER 1] tid 3903014
+#Reserving memory for page cache...
+#Reserving memory for page cache...
+(page_cache_init,29) [  7350ms] Page cache initialization
+(page_cache_init,29) [  7363ms] Page cache initialization
+(main,41) [  7364ms] Init found 0 elements
+Initializing big array to insert elements in random order... This might take a while. (Feel free to comment but then the database will be sorted and scans much faster -- unfair vs other systems)
+(repopulate_db,128) [ 11386ms] Big array of random positions
+(repopulate_db,149) [243854ms] Repopulating 100000000 elements (410081 req/s)
+(run_workload,269) [112805ms] YCSB F - Zipf - 10000000 requests (88647 req/s)
+#Latency:
+#	AVG - 122 us
+#	99.9p - 1257 us
+#	max - 4971 us
+# Configuration:
+# 	Page cache size: 30 GB
+# 	Workers: 4 working on 1 disks
+# 	IO configuration: 64 queue depth (capped: yes, extra waiting: no)
+# 	Queue configuration: 256 maximum pending callbaks per worker
+# 	Datastructures: 3 (memory index) 3 (pagecache)
+# 	Thread pinning: yes
+# 	Bench: YCSB (100000000 elements)
+Initializing random number generator (Zipf) -- this might take a while for large databases...
+(main,36) [  1661ms] Initializing random number generator (Zipf)
+[SLAB WORKER 0] tid 3904003
+[SLAB WORKER 1] tid 3904004
+[SLAB WORKER 2] tid 3904005
+[SLAB WORKER 3] tid 3904006
+#Reserving memory for page cache...
+#Reserving memory for page cache...
+#Reserving memory for page cache...
+#Reserving memory for page cache...
+(page_cache_init,29) [  3760ms] Page cache initialization
+(page_cache_init,29) [  3770ms] Page cache initialization
+(page_cache_init,29) [  3780ms] Page cache initialization
+(page_cache_init,29) [  3783ms] Page cache initialization
+(main,41) [  3783ms] Init found 0 elements
+Initializing big array to insert elements in random order... This might take a while. (Feel free to comment but then the database will be sorted and scans much faster -- unfair vs other systems)
+(repopulate_db,128) [ 11392ms] Big array of random positions
+(repopulate_db,149) [177493ms] Repopulating 100000000 elements (563402 req/s)
+(run_workload,269) [115952ms] YCSB F - Zipf - 10000000 requests (86242 req/s)
+#Latency:
+#	AVG - 68 us
+#	99.9p - 614 us
+#	max - 3990 us
+# Configuration:
+# 	Page cache size: 30 GB
+# 	Workers: 8 working on 1 disks
+# 	IO configuration: 64 queue depth (capped: yes, extra waiting: no)
+# 	Queue configuration: 256 maximum pending callbaks per worker
+# 	Datastructures: 3 (memory index) 3 (pagecache)
+# 	Thread pinning: yes
+# 	Bench: YCSB (100000000 elements)
+Initializing random number generator (Zipf) -- this might take a while for large databases...
+(main,36) [  1671ms] Initializing random number generator (Zipf)
+[SLAB WORKER 0] tid 3904821
+[SLAB WORKER 1] tid 3904822
+[SLAB WORKER 2] tid 3904823
+[SLAB WORKER 3] tid 3904824
+[SLAB WORKER 4] tid 3904825
+[SLAB WORKER 5] tid 3904826
+[SLAB WORKER 6] tid 3904827
+#Reserving memory for page cache...
+#Reserving memory for page cache...
+#Reserving memory for page cache...
+#Reserving memory for page cache...
+#Reserving memory for page cache...
+#Reserving memory for page cache...
+#Reserving memory for page cache...
+[SLAB WORKER 7] tid 3904828
+#Reserving memory for page cache...
+(page_cache_init,29) [  2180ms] Page cache initialization
+(page_cache_init,29) [  2182ms] Page cache initialization
+(page_cache_init,29) [  2191ms] Page cache initialization
+(page_cache_init,29) [  2192ms] Page cache initialization
+(page_cache_init,29) [  2192ms] Page cache initialization
+(page_cache_init,29) [  2198ms] Page cache initialization
+(page_cache_init,29) [  2198ms] Page cache initialization
+(page_cache_init,29) [  2203ms] Page cache initialization
+(main,41) [  2203ms] Init found 0 elements
+Initializing big array to insert elements in random order... This might take a while. (Feel free to comment but then the database will be sorted and scans much faster -- unfair vs other systems)
+(repopulate_db,128) [ 11882ms] Big array of random positions
+(repopulate_db,149) [192666ms] Repopulating 100000000 elements (519031 req/s)
+(run_workload,269) [121014ms] YCSB F - Zipf - 10000000 requests (82634 req/s)
+#Latency:
+#	AVG - 49 us
+#	99.9p - 504 us
+#	max - 5400 us
+# Configuration:
+# 	Page cache size: 30 GB
+# 	Workers: 16 working on 1 disks
+# 	IO configuration: 64 queue depth (capped: yes, extra waiting: no)
+# 	Queue configuration: 256 maximum pending callbaks per worker
+# 	Datastructures: 3 (memory index) 3 (pagecache)
+# 	Thread pinning: yes
+# 	Bench: YCSB (100000000 elements)
+Initializing random number generator (Zipf) -- this might take a while for large databases...
+(main,36) [  1682ms] Initializing random number generator (Zipf)
+[SLAB WORKER 0] tid 3906117
+[SLAB WORKER 1] tid 3906118
+[SLAB WORKER 2] tid 3906119
+[SLAB WORKER 5] tid 3906122
+[SLAB WORKER 4] tid 3906121
+[SLAB WORKER 3] tid 3906120
+#Reserving memory for page cache...
+[SLAB WORKER 6] tid 3906123
+#Reserving memory for page cache...
+#Reserving memory for page cache...
+#Reserving memory for page cache...
+#Reserving memory for page cache...
+#Reserving memory for page cache...
+[SLAB WORKER 7] tid 3906124
+#Reserving memory for page cache...
+[SLAB WORKER 8] tid 3906125
+[SLAB WORKER 10] tid 3906127
+[SLAB WORKER 9] tid 3906126
+[SLAB WORKER 11] tid 3906128
+[SLAB WORKER 12] tid 3906129
+#Reserving memory for page cache...
+#Reserving memory for page cache...
+#Reserving memory for page cache...
+#Reserving memory for page cache...
+#Reserving memory for page cache...
+[SLAB WORKER 13] tid 3906130
+#Reserving memory for page cache...
+[SLAB WORKER 14] tid 3906131
+[SLAB WORKER 15] tid 3906132
+#Reserving memory for page cache...
+#Reserving memory for page cache...
+#Reserving memory for page cache...
+(page_cache_init,29) [  1441ms] Page cache initialization
+(page_cache_init,29) [  1441ms] Page cache initialization
+(page_cache_init,29) [  1446ms] Page cache initialization
+(page_cache_init,29) [  1448ms] Page cache initialization
+(page_cache_init,29) [  1460ms] Page cache initialization
+(page_cache_init,29) [  1462ms] Page cache initialization
+(page_cache_init,29) [  1464ms] Page cache initialization
+(page_cache_init,29) [  1463ms] Page cache initialization
+(page_cache_init,29) [  1466ms] Page cache initialization
+(page_cache_init,29) [  1467ms] Page cache initialization
+(page_cache_init,29) [  1467ms] Page cache initialization
+(page_cache_init,29) [  1469ms] Page cache initialization
+(page_cache_init,29) [  1471ms] Page cache initialization
+(page_cache_init,29) [  1475ms] Page cache initialization
+(page_cache_init,29) [  1478ms] Page cache initialization
+(page_cache_init,29) [  1689ms] Page cache initialization
+(main,41) [  1692ms] Init found 0 elements
+Initializing big array to insert elements in random order... This might take a while. (Feel free to comment but then the database will be sorted and scans much faster -- unfair vs other systems)
+(repopulate_db,128) [  9828ms] Big array of random positions
+(repopulate_db,149) [193359ms] Repopulating 100000000 elements (517172 req/s)
+(run_workload,269) [122418ms] YCSB F - Zipf - 10000000 requests (81687 req/s)
+#Latency:
+#	AVG - 44 us
+#	99.9p - 496 us
+#	max - 4470 us
+# Configuration:
+# 	Page cache size: 30 GB
+# 	Workers: 32 working on 1 disks
+# 	IO configuration: 64 queue depth (capped: yes, extra waiting: no)
+# 	Queue configuration: 256 maximum pending callbaks per worker
+# 	Datastructures: 3 (memory index) 3 (pagecache)
+# 	Thread pinning: yes
+# 	Bench: YCSB (100000000 elements)
+Initializing random number generator (Zipf) -- this might take a while for large databases...
+(main,36) [  1635ms] Initializing random number generator (Zipf)
+[SLAB WORKER 0] tid 3907695
+[SLAB WORKER 1] tid 3907696
+[SLAB WORKER 2] tid 3907697
+[SLAB WORKER 5] tid 3907700
+[SLAB WORKER 3] tid 3907698
+#Reserving memory for page cache...
+[SLAB WORKER 4] tid 3907699
+#Reserving memory for page cache...
+[SLAB WORKER 6] tid 3907701
+#Reserving memory for page cache...
+[SLAB WORKER 7] tid 3907702
+[SLAB WORKER 8] tid 3907703
+[SLAB WORKER 9] tid 3907704
+#Reserving memory for page cache...
+#Reserving memory for page cache...
+#Reserving memory for page cache...
+[SLAB WORKER 10] tid 3907705
+#Reserving memory for page cache...
+#Reserving memory for page cache...
+#Reserving memory for page cache...
+#Reserving memory for page cache...
+#Reserving memory for page cache...
+[SLAB WORKER 11] tid 3907706
+[SLAB WORKER 12] tid 3907707
+[SLAB WORKER 13] tid 3907708
+[SLAB WORKER 14] tid 3907709
+#Reserving memory for page cache...
+[SLAB WORKER 15] tid 3907710
+#Reserving memory for page cache...
+#Reserving memory for page cache...
+#Reserving memory for page cache...
+[SLAB WORKER 16] tid 3907711
+#Reserving memory for page cache...
+[SLAB WORKER 17] tid 3907712
+#Reserving memory for page cache...
+[SLAB WORKER 18] tid 3907713
+[SLAB WORKER 19] tid 3907714
+#Reserving memory for page cache...
+#Reserving memory for page cache...
+#Reserving memory for page cache...
+[SLAB WORKER 21] tid 3907716
+[SLAB WORKER 20] tid 3907715
+#Reserving memory for page cache...
+[SLAB WORKER 22] tid 3907717
+#Reserving memory for page cache...
+[SLAB WORKER 23] tid 3907718
+[SLAB WORKER 24] tid 3907719
+#Reserving memory for page cache...
+#Reserving memory for page cache...
+#Reserving memory for page cache...
+[SLAB WORKER 25] tid 3907720
+#Reserving memory for page cache...
+[SLAB WORKER 26] tid 3907721
+#Reserving memory for page cache...
+[SLAB WORKER 27] tid 3907722
+#Reserving memory for page cache...
+[SLAB WORKER 28] tid 3907723
+[SLAB WORKER 29] tid 3907724
+#Reserving memory for page cache...
+#Reserving memory for page cache...
+[SLAB WORKER 30] tid 3907725
+#Reserving memory for page cache...
+[SLAB WORKER 31] tid 3907726
+#Reserving memory for page cache...
+(page_cache_init,29) [  1528ms] Page cache initialization
+(page_cache_init,29) [  1529ms] Page cache initialization
+(page_cache_init,29) [  1544ms] Page cache initialization
+(page_cache_init,29) [  1545ms] Page cache initialization
+(page_cache_init,29) [  1554ms] Page cache initialization
+(page_cache_init,29) [  1551ms] Page cache initialization
+(page_cache_init,29) [  1554ms] Page cache initialization
+(page_cache_init,29) [  1555ms] Page cache initialization
+(page_cache_init,29) [  1555ms] Page cache initialization
+(page_cache_init,29) [  1557ms] Page cache initialization
+(page_cache_init,29) [  1561ms] Page cache initialization
+(page_cache_init,29) [  1560ms] Page cache initialization
+(page_cache_init,29) [  1559ms] Page cache initialization
+(page_cache_init,29) [  1565ms] Page cache initialization
+(page_cache_init,29) [  1566ms] Page cache initialization
+(page_cache_init,29) [  1577ms] Page cache initialization
+(page_cache_init,29) [  1801ms] Page cache initialization
+(page_cache_init,29) [  1803ms] Page cache initialization
+(page_cache_init,29) [  1812ms] Page cache initialization
+(page_cache_init,29) [  1819ms] Page cache initialization
+(page_cache_init,29) [  1819ms] Page cache initialization
+(page_cache_init,29) [  1820ms] Page cache initialization
+(page_cache_init,29) [  1822ms] Page cache initialization
+(page_cache_init,29) [  1825ms] Page cache initialization
+(page_cache_init,29) [  1826ms] Page cache initialization
+(page_cache_init,29) [  1829ms] Page cache initialization
+(page_cache_init,29) [  1832ms] Page cac

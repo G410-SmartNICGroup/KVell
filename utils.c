@@ -32,7 +32,7 @@ static uint64_t get_cpu_freq(void) {
 
 
 uint64_t cycles_to_us(uint64_t cycles) {
-   return cycles*1000000LU/get_cpu_freq();
+    return cycles*1000000LU/(uint64_t)(1000 * 1000000UL);
 }
 
 void shuffle(size_t *array, size_t n) {

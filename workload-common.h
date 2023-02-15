@@ -24,6 +24,11 @@ typedef enum available_bench {
    ycsb_e_zipfian,
    ycsb_g_zipfian,
    ycsb_f_zipfian,
+   ycsb_d_zipfian,
+   seq_read,
+   seq_write,
+   rnd_read,
+   rnd_write,
    prod1,
    prod2,
 } bench_t;
