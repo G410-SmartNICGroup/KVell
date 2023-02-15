@@ -5,3 +5,7 @@ microbench
 benchcomponents
 scripts/parse_log
 makefile.dep
+*.out
+*.csv
+nohup*
+output*
